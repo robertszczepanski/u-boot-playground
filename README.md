@@ -1,11 +1,12 @@
-# Lab 3 - Busybox
+# u-boot playground
 
-This is a repository that contains a solution to lab 3 about Busybox. Its goal is to run Linux with proper filesystem via u-boot on vexpress-a9 machine using QEMU.
+This repository integrates Busybox filesystem with Linux kernel running in ARM QEMU (vexpress-a9 machine) on u-boot bootloader used as FSBL.
+QEMU exposes TFTP server that is used by u-boot to load Linux kernel, devicetree and filesystem. Linux is also capable of mounting filesystem via NFS server.
 
 
 ## Installation
 
-You must configure properly both u-boot, Linux and Busybox.
+By default following instructions will configure your environment to run QEMU with TFTP server that is used to load Linux kernel, devicetree and a basic filesystem. However it is possible to follow additional steps to either modify your filesystem by compiling into it a simple Hello World program or mouint filesystem via NFS server that will allow you to manage it on system runtime.
 
 ### u-boot
 
@@ -116,7 +117,7 @@ You must configure properly both u-boot, Linux and Busybox.
     cp uRamdisk /home/student/tftp/
     ```
 
-### Add application to filesystem
+### Add application to filesystem (optional)
 
 1. Compile application using arm compiler with static libraries:
     ```bash
@@ -142,7 +143,7 @@ You must configure properly both u-boot, Linux and Busybox.
     cp uRamdisk /home/student/tftp/
     ```
 
-### Use filesystem via NFS
+### Use filesystem via NFS (optional)
 
 Mounting filesystem via NFS allows you to access these files on runtime without a need to rebuild filesystem image. This part of tutorial assumes using clean u-boot so if you applied a patch earlier, revert it with `git apply -R busybox.diff`.
 
