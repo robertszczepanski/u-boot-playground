@@ -7,7 +7,7 @@ index 9390cf61d1..d1e0d1f7f8 100644
  CONFIG_DISTRO_DEFAULTS=y
  CONFIG_NR_DRAM_BANKS=2
 -CONFIG_BOOTCOMMAND="run distro_bootcmd; run bootflash"
-+CONFIG_BOOTCOMMAND="run distro_bootcmd; setenv bootargs 'console=ttyAMA0 rdinit=/bin/sh'; tftp 0x61000000 zImage; tftp 0x62000000 uRamdisk; tftp 0x63000000 vexpress-v2p-ca9.dtb; bootz 0x61000000 0x62000000 0x63000000"
++CONFIG_BOOTCOMMAND="dhcp; setenv bootargs 'console=ttyAMA0 rdinit=/bin/sh'; tftp 0x61000000 zImage; tftp 0x62000000 uRamdisk; tftp 0x63000000 vexpress-v2p-ca9.dtb; bootz 0x61000000 0x62000000 0x63000000"
  # CONFIG_DISPLAY_CPUINFO is not set
  # CONFIG_DISPLAY_BOARDINFO is not set
  # CONFIG_CMD_CONSOLE is not set
