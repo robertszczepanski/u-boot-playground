@@ -154,6 +154,7 @@ Mounting filesystem via NFS allows you to access these files on runtime without 
 2. Apply patch and rebuild u-boot:
     ```bash
     cd u-boot
+    git apply busybox_nfs.diff
     make vexpress_ca9x4_defconfig ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
     make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
     cd ..
@@ -167,7 +168,6 @@ Mounting filesystem via NFS allows you to access these files on runtime without 
     ```
 
 4. Configure NFS server's shares:
-
     ```bash
     chown 1000:1000 /srv/nfs # This might require root privileges
     echo "/srv/nfs *(ro,sync,no_subtree_check,all_squash,insecure,anonuid=1000,anongid=1000)" >> /etc/exports
